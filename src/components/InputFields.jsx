@@ -59,10 +59,7 @@ const InputFields = ({ inputValue, setInputValue, errors }) => {
       >
         {/* Name  */}
         <Grid size={{ lg: 4, md: 4, sm: 4, xs: 12 }}>
-          <Typography
-            variant="body2"
-            gutterBottom           
-          >
+          <Typography variant="body2" gutterBottom>
             Name
           </Typography>
         </Grid>
@@ -88,10 +85,7 @@ const InputFields = ({ inputValue, setInputValue, errors }) => {
 
         {/* Email */}
         <Grid size={{ lg: 4, md: 4, sm: 4, xs: 12 }}>
-          <Typography
-            variant="body2"
-            gutterBottom
-          >
+          <Typography variant="body2" gutterBottom>
             Email
           </Typography>
         </Grid>
@@ -117,10 +111,7 @@ const InputFields = ({ inputValue, setInputValue, errors }) => {
 
         {/* Gender  */}
         <Grid size={{ lg: 4, md: 4, sm: 4, xs: 12 }}>
-          <Typography
-            variant="body2"
-            gutterBottom
-          >
+          <Typography variant="body2" gutterBottom>
             Gender
           </Typography>
         </Grid>
@@ -178,10 +169,7 @@ const InputFields = ({ inputValue, setInputValue, errors }) => {
 
         {/* Date of birth  */}
         <Grid size={{ lg: 4, md: 4, sm: 4, xs: 12 }}>
-          <Typography
-            variant="body2"
-            gutterBottom
-          >
+          <Typography variant="body2" gutterBottom>
             Date of Birth
           </Typography>
         </Grid>
@@ -211,10 +199,7 @@ const InputFields = ({ inputValue, setInputValue, errors }) => {
 
         {/* City  */}
         <Grid size={{ lg: 4, md: 4, sm: 4, xs: 12 }}>
-          <Typography
-            variant="body2"
-            gutterBottom
-          >
+          <Typography variant="body2" gutterBottom>
             City
           </Typography>
         </Grid>
@@ -240,10 +225,7 @@ const InputFields = ({ inputValue, setInputValue, errors }) => {
 
         {/* Country  */}
         <Grid size={{ lg: 4, md: 4, sm: 4, xs: 12 }}>
-          <Typography
-            variant="body2"
-            gutterBottom
-          >
+          <Typography variant="body2" gutterBottom>
             Country
           </Typography>
         </Grid>
@@ -269,10 +251,7 @@ const InputFields = ({ inputValue, setInputValue, errors }) => {
 
         {/* Subscription  */}
         <Grid size={{ lg: 4, md: 4, sm: 4, xs: 12 }}>
-          <Typography
-            variant="body2"
-            gutterBottom
-          >
+          <Typography variant="body2" gutterBottom>
             Subscription
           </Typography>
         </Grid>
