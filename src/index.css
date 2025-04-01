@@ -27,10 +27,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* display: flex;
-  place-items: center;
-  min-width: 320px; */
-  /* background-color: #24b29a; */
   background: linear-gradient(to right ,#2abe9c,#1a9d95);
   min-height: 100vh;
 }

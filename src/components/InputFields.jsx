@@ -10,36 +10,36 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
+const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
+  const handleGenderChange = React.useCallback(
+    (event, newGender) => {
+      if (newGender !== null) {
+        setInputValue((prev) => ({ ...prev, gender: newGender }));
+      }
+    },
+    [setInputValue]
+  );
 
-const InputFields = ({ inputValue, setInputValue, errors }) => {
-  const handleGenderChange = (event, newGender) => {
-    if (newGender !== null) {
-      setInputValue((prev) => ({
-        ...prev,
-        gender: newGender,
-      }));
-    }
-  };
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const handleInputChange = React.useCallback(
+    (e) => {
+      const { name, value } = e.target;
+      setInputValue((prev) => ({ ...prev, [name]: value }));
+    },
+    [setInputValue]
+  );
 
-    setInputValue((inputValue) => ({
-      ...inputValue,
-      [name]: value,
-    }));
-    console.log(inputValue, "inputValue");
-  };
-
-  // Handle checkbox change
-  const handleCheckboxChange = (event) => {
-    const { name, checked } = event.target;
-    setInputValue((prev) => ({
-      ...prev,
-      subscriptions: checked
-        ? [...prev.subscriptions, name] // Add if checked
-        : prev.subscriptions.filter((item) => item !== name), // Remove if unchecked
-    }));
-  };
+  const handleCheckboxChange = React.useCallback(
+    (event) => {
+      const { name, checked } = event.target;
+      setInputValue((prev) => {
+        const updatedSubscriptions = checked
+          ? [...prev.subscriptions, name]
+          : prev.subscriptions.filter((item) => item !== name);
+        return { ...prev, subscriptions: updatedSubscriptions };
+      });
+    },
+    [setInputValue]
+  );
   return (
     <Box
       component="form"
@@ -184,7 +184,7 @@ const InputFields = ({ inputValue, setInputValue, errors }) => {
             // value={inputValue?.date}
             value={
               inputValue?.date
-                ? inputValue.date.split("/").reverse().join("-")
+                ? inputValue.date.split("/").reverse().join("-") // Convert dd/mm/yyyy to yyyy-mm-dd
                 : ""
             }
             onChange={handleInputChange}
@@ -288,6 +288,6 @@ const InputFields = ({ inputValue, setInputValue, errors }) => {
       </Grid>
     </Box>
   );
-};
+});
 
 export default InputFields;

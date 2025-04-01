@@ -62,7 +62,6 @@ const Registration = () => {
       } else {
         userData.push(inputValue);
         localStorage.setItem("usersData", JSON.stringify(userData));
-        // alert("Sign up successful!");
         setInputValue({
           username: "",
           email: "",
@@ -91,7 +90,7 @@ const Registration = () => {
   };
   return (
     <>
-      <Box sx={{ width: "70%" }}>
+      <Box sx={{ width: { xs: "100%", sm: "100%", md: "80%", lg: "70%" } }}>
         <Typography
           variant="h5"
           fontWeight={700}

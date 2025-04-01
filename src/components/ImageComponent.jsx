@@ -68,7 +68,18 @@ const ImageComponent = () => {
             <Typography variant="body1" textAlign="center" gutterBottom>
               CLICK FOR YOUR SHOOT
             </Typography>
-            <Typography variant="h4" gutterBottom>
+            <Typography
+              variant="h4"
+              gutterBottom
+              sx={{
+                fontSize: {
+                  lg: "45px !important",
+                  md: "32px !important",
+                  sm: "30px !important",
+                  xs: "24px !important",
+                },
+              }}
+            >
               Photography.
             </Typography>
           </div>

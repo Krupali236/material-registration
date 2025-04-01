@@ -25,6 +25,7 @@ const theme = createTheme({
       fontFamily: "emoji",
       letterSpacing: 1,
     },
+
     body2: {
       // input fields label
       fontSize: "12px",
@@ -108,22 +109,6 @@ const theme = createTheme({
         },
       },
     },
-    MuiInputAdornment: {
-      styleOverrides: {
-        root: {
-          backgroundColor: "#58bd94", // input icon background color
-          height: "55px",
-          width: "55px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: "0px !important",
-          padding: "3px 0px",
-          borderTopLeftRadius: "5px",
-          borderBottomLeftRadius: "5px",
-        },
-      },
-    },
     MuiButton: {
       styleOverrides: {
         root: {
@@ -178,7 +163,14 @@ const theme = createTheme({
         },
       },
     },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          margin: "0 !important",
+          padding: "0px",
+        },
+      },
+    },
   },
 });
-
 export default theme;

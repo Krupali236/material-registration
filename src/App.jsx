@@ -15,7 +15,7 @@ function App() {
           sx={{
             flexGrow: 1,
             bgcolor: "white",
-            height: { lg: "90vh", md: "90vh", sm: "80vh", xs: "100%" },
+            height: { lg: "90vh", md: "90vh", sm: "100vh", xs: "100%" },
             borderRadius: "10px",
           }}
         >
