@@ -19,7 +19,9 @@ const ConfirmBtn = ({
         backgroundColor: color,
         color: "white",
         "&:hover": {
-          backgroundColor: "#29938c",
+          backgroundColor: "#fff",
+          color: color,
+          border: "2px solid #0ba39f !important",
         },
       }}
     >

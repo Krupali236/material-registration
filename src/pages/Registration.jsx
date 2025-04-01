@@ -72,13 +72,23 @@ const Registration = () => {
           date: "",
           subscriptions: [],
         });
-        // setInputValue({ username: "", email: "", password: "" });
         console.log("Opening Dialog..."); // Debugging log
         setDialogOpen(true);
       }
     }
   };
-  const handleCancelBtn = () => {};
+  const handleCancelBtn = () => {
+    setInputValue({
+      username: "",
+      email: "",
+      gender: "",
+      city: "",
+      country: "",
+      date: "",
+      subscriptions: [],
+    });
+    setErrors({});
+  };
   return (
     <>
       <Box sx={{ width: "70%" }}>

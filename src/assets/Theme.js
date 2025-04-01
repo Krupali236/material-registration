@@ -135,11 +135,6 @@ const theme = createTheme({
           textTransform: "uppercase",
           fontSize: "12px",
           transition: "0.3s",
-          "&:hover": {
-            // backgroundColor: "white",
-            color: "#fff !important",
-            border: "2px solid #fff !important",
-          },
         },
       },
     },
@@ -163,7 +158,7 @@ const theme = createTheme({
           borderRadius: "12px",
           textAlign: "center",
           overflow: "visible",
-          borderTop: "4px solid #0faf82", // Green top border
+          borderTop: "4px solid #0ba39f", // Green top border
           boxShadow: "0px 4px 10px rgba(0,0,0,0.1)", // Subtle shadow
         },
       },

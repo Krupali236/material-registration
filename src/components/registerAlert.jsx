@@ -13,7 +13,6 @@ import CancelBtn from "./CancelBtn";
 import ConfirmBtn from "./ConfirmBtn";
 export default function RegisterAlert({ open, handleClose }) {
   console.log("RegisterAlert Rendered - Open:", open);
-  // const navigate = useNavigate();
   return (
     <>
       <Dialog
@@ -27,7 +26,7 @@ export default function RegisterAlert({ open, handleClose }) {
             top: "-30px",
             left: "50%",
             transform: "translateX(-50%)",
-            backgroundColor: "#0faf82",
+            backgroundColor: "#0ba39f",
             width: "60px",
             height: "60px",
             borderRadius: "50%",
@@ -43,14 +42,12 @@ export default function RegisterAlert({ open, handleClose }) {
         </Box>
 
         {/* Dialog Title */}
-        <DialogTitle id="success-dialog" sx={{ fontWeight: "bold" }}>
-          Sign up Successful!
-        </DialogTitle>
+        <DialogTitle id="success-dialog">Registration Successful!</DialogTitle>
 
         <DialogContent>
-          <Typography variant="body2" sx={{ mt: 1, textAlign: "center" }}>
-            Welcome! Your account has been created successfully. You can now log
-            in and start exploring.
+          <Typography variant="body2" textAlign="center">
+            Welcome! Your account has been register successfully. You can now
+            log in and start exploring.
           </Typography>
         </DialogContent>
 
@@ -58,8 +55,8 @@ export default function RegisterAlert({ open, handleClose }) {
         <Divider />
 
         {/* Dialog Actions */}
-        <DialogActions sx={{ justifyContent: "center", pb: 2 }}>
-          <CancelBtn onClick={handleClose}>Cancel</CancelBtn>
+        <DialogActions>
+          {/* <CancelBtn onClick={handleClose}>Cancel</CancelBtn> */}
 
           <ConfirmBtn onClick={handleClose}>OK</ConfirmBtn>
         </DialogActions>

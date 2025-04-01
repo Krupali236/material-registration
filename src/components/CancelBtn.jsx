@@ -19,7 +19,9 @@ const CancelBtn = ({
         backgroundColor: color,
         color: "white",
         "&:hover": {
-          backgroundColor: "#15102c",
+          backgroundColor: "#fff",
+          color: color,
+          border: "2px solid #322a58 !important",
         },
       }}
     >
