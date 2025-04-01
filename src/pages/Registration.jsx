@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputFields from "../components/InputFields";
 import CancelBtn from "../components/CancelBtn";
 import ConfirmBtn from "../components/ConfirmBtn";
@@ -49,16 +49,24 @@ const Registration = () => {
     const validation = isValid(inputValue);
     if (validation) {
       const userData = JSON.parse(localStorage.getItem("usersData")) || [];
+
       const userExist = userData.some(
-        (users) =>
-          users.username === inputValue.username ||
-          users.email === inputValue.email
+        (user) =>
+          user.username === inputValue.username ||
+          user.email === inputValue.email
       );
+
       if (userExist) {
-        setErrors((prev) => ({
-          ...prev,
-          user: "Username or email already exists!",
-        }));
+        setErrors((prev) => {
+          const newErrors = { ...prev };
+          if (userData.some((user) => user.username === inputValue.username)) {
+            newErrors.username = "Username already exists!";
+          }
+          if (userData.some((user) => user.email === inputValue.email)) {
+            newErrors.email = "Email already exists!";
+          }
+          return newErrors;
+        });
       } else {
         userData.push(inputValue);
         localStorage.setItem("usersData", JSON.stringify(userData));
@@ -88,6 +96,7 @@ const Registration = () => {
     });
     setErrors({});
   };
+
   return (
     <>
       <Box sx={{ width: { xs: "100%", sm: "100%", md: "80%", lg: "70%" } }}>
@@ -136,7 +145,7 @@ const Registration = () => {
                   gap: 1,
                 }}
               >
-                <CancelBtn onClick={handleCancelBtn}>Cancel</CancelBtn>
+                <CancelBtn onClick={handleCancelBtn}>Clear</CancelBtn>
                 <ConfirmBtn onClick={handleConfirmBtn}>Confirm </ConfirmBtn>
               </Box>
             </Grid>

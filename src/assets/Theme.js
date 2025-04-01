@@ -171,6 +171,42 @@ const theme = createTheme({
         },
       },
     },
+    MuiAutocomplete: {
+      styleOverrides: {
+        root: {
+          width: "100% !important",
+        },
+        paper: {
+          width: "100%",
+          font: "revert",
+          backgroundColor: "#fff", // Dropdown background color
+          color: "#000", // Text color inside dropdown
+        },
+        listbox: {
+          width: "100%",
+          font: "revert",
+          fontSize: "12px",
+          backgroundColor: "transparent", // Background of the options
+          color: "#000", // Text color of options
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          font: "revert",
+          fontSize: "12px",
+          color: "#000 !important", // Set label color to black
+        },
+      },
+    },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          maxWidth: "1100px",
+        },
+      },
+    },
   },
 });
 export default theme;

@@ -10,6 +10,8 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
+import Autocomplete from "@mui/material/Autocomplete";
+import Location from "./location";
 const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
   const handleGenderChange = React.useCallback(
     (event, newGender) => {
@@ -40,6 +42,14 @@ const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
     },
     [setInputValue]
   );
+
+  const selectedCountry = Location[0].countries.find(
+    (c) => c.name === inputValue?.country
+  );
+
+  const selectedState = selectedCountry?.states.find(
+    (s) => s.name === inputValue?.state
+  );
   return (
     <Box
       component="form"
@@ -66,12 +76,12 @@ const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
         <Grid size={{ lg: 8, md: 8, sm: 8, xs: 12 }}>
           {/* Username  */}
           <TextField
-            error
+            error={Boolean(errors?.username)}
             id={errors?.username ? "filled-error-helper-text" : "filled-basic"}
             placeholder="Username"
             variant="filled"
             name="username"
-            helperText={errors.username ? "please enter valid username" : ""}
+            helperText={errors.username ? errors.username : ""}
             value={inputValue?.username}
             onChange={handleInputChange}
             type="text"
@@ -97,7 +107,7 @@ const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
             placeholder="Email"
             variant="filled"
             name="email"
-            helperText={errors.email ? "please enter valid email" : ""}
+            helperText={errors.email ? errors.email : ""}
             value={inputValue?.email}
             onChange={handleInputChange}
             type="email"
@@ -138,8 +148,14 @@ const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
                     border: 1,
                     borderColor: "transparent",
                     borderRadius: "100% !important",
-                    backgroundColor: "#0aa69f",
-                    "&:hover": { backgroundColor: "#088d86" },
+                    // backgroundColor: "#0aa69f",
+                    // "&:hover": { backgroundColor: "#088d86" },
+                    backgroundColor:
+                      inputValue.gender === "Male" ? "#0aa69f" : "#ccc",
+                    "&:hover": {
+                      backgroundColor:
+                        inputValue.gender === "Male" ? "#088d86" : "#bbb",
+                    },
                   },
               }}
             >
@@ -156,8 +172,14 @@ const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
                     border: 1,
                     borderColor: "transparent",
                     borderRadius: "100% !important",
-                    backgroundColor: "#3c2e86",
-                    "&:hover": { backgroundColor: "#322c53" },
+                    // backgroundColor: "#3c2e86",
+                    backgroundColor:
+                      inputValue.gender === "Female" ? "#3c2e86" : "#ccc",
+                    "&:hover": {
+                      backgroundColor:
+                        inputValue.gender === "Female" ? "#322c53" : "#bbb",
+                    },
+                    // "&:hover": { backgroundColor: "#322c53" },
                   },
               }}
             >
@@ -196,33 +218,6 @@ const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
             }}
           />
         </Grid>
-
-        {/* City  */}
-        <Grid size={{ lg: 4, md: 4, sm: 4, xs: 12 }}>
-          <Typography variant="body2" gutterBottom>
-            City
-          </Typography>
-        </Grid>
-        <Grid size={{ lg: 8, md: 8, sm: 8, xs: 12 }}>
-          {/* City  */}
-          <TextField
-            error
-            id={errors?.city ? "filled-error-helper-text" : "filled-basic"}
-            placeholder="City"
-            variant="filled"
-            name="city"
-            helperText={errors.city ? "please enter valid city" : ""}
-            value={inputValue?.city}
-            onChange={handleInputChange}
-            type="text"
-            sx={{
-              "& .MuiFilledInput-root": {
-                border: errors?.city ? "1px solid #d32f2f" : "none",
-              },
-            }}
-          />
-        </Grid>
-
         {/* Country  */}
         <Grid size={{ lg: 4, md: 4, sm: 4, xs: 12 }}>
           <Typography variant="body2" gutterBottom>
@@ -231,7 +226,7 @@ const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
         </Grid>
         <Grid size={{ lg: 8, md: 8, sm: 8, xs: 12 }}>
           {/* Country  */}
-          <TextField
+          {/* <TextField
             error
             id={errors?.country ? "filled-error-helper-text" : "filled-basic"}
             placeholder="Country"
@@ -245,6 +240,90 @@ const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
               "& .MuiFilledInput-root": {
                 border: errors?.country ? "1px solid #d32f2f" : "none",
               },
+            }}
+          /> */}
+
+          <Autocomplete
+            disablePortal
+            options={Location[0].countries.map((country) => country.name)}
+            sx={{ width: 300, color: "#000" }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                sx={{ color: "#000" }}
+                placeholder="Country"
+              />
+            )}
+            onChange={(event, value) => {
+              setInputValue((prev) => ({
+                ...prev,
+                country: value,
+                state: "",
+                city: "",
+              }));
+            }}
+          />
+        </Grid>
+
+        {/* State  */}
+        <Grid size={{ lg: 4, md: 4, sm: 4, xs: 12 }}>
+          <Typography variant="body2" gutterBottom>
+            State
+          </Typography>
+        </Grid>
+        <Grid size={{ lg: 8, md: 8, sm: 8, xs: 12 }}>
+          {/* State  */}
+          {/* <TextField
+            error
+            id={errors?.state ? "filled-error-helper-text" : "filled-basic"}
+            placeholder="State"
+            variant="filled"
+            name="state"
+            helperText={errors.state ? "please enter valid state" : ""}
+            value={inputValue?.state}
+            onChange={handleInputChange}
+            type="text"
+            sx={{
+              "& .MuiFilledInput-root": {
+                border: errors?.state ? "1px solid #d32f2f" : "none",
+              },
+            }}
+          /> */}
+
+          <Autocomplete
+            disablePortal
+            options={
+              selectedCountry
+                ? selectedCountry.states.map((state) => state.name)
+                : []
+            }
+            sx={{ width: 300 }}
+            renderInput={(params) => (
+              <TextField {...params} placeholder="State" />
+            )}
+            onChange={(event, value) => {
+              setInputValue((prev) => ({ ...prev, state: value, city: "" }));
+            }}
+          />
+        </Grid>
+
+        {/* City  */}
+        <Grid size={{ lg: 4, md: 4, sm: 4, xs: 12 }}>
+          <Typography variant="body2" gutterBottom>
+            City
+          </Typography>
+        </Grid>
+        <Grid size={{ lg: 8, md: 8, sm: 8, xs: 12 }}>
+          {/* City  */}
+          <Autocomplete
+            disablePortal
+            options={selectedState ? selectedState.cities : []}
+            sx={{ width: 300 }}
+            renderInput={(params) => (
+              <TextField {...params} placeholder="City" />
+            )}
+            onChange={(event, value) => {
+              setInputValue((prev) => ({ ...prev, city: value }));
             }}
           />
         </Grid>
