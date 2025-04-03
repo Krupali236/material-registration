@@ -19,11 +19,13 @@ const theme = createTheme({
     },
     h5: {
       fontSize: "24px",
-      color: "#fff",
-      fontWeight: 400,
+      color: "#0ba39f",
+      fontWeight: 700,
       textAlign: "center",
       fontFamily: "emoji",
       letterSpacing: 1,
+      marginBottom: "0px !important",
+      lineHeight: 0.6,
     },
 
     body2: {

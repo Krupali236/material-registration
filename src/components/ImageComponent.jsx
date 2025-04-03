@@ -12,7 +12,7 @@ const ImageComponent = () => {
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          height: "100vh",
+          height: "100%",
           width: "100%",
           position: "absolute",
           top: 0,
@@ -75,7 +75,7 @@ const ImageComponent = () => {
                 fontSize: {
                   lg: "45px !important",
                   md: "32px !important",
-                  sm: "30px !important",
+                  sm: "28px !important",
                   xs: "24px !important",
                 },
               }}

@@ -102,12 +102,7 @@ const Registration = () => {
       <Box sx={{ width: { xs: "100%", sm: "100%", md: "80%", lg: "70%" } }}>
         <Typography
           variant="h5"
-          fontWeight={700}
-          color="#0ba39f"
-          gutterBottom
-          sx={{ marginBottom: "0px !important" }}
-          textAlign="center"
-          lineHeight={0.6}
+          gutterBottom          
         >
           Registration
         </Typography>

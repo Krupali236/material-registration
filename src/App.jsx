@@ -10,14 +10,17 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Container maxWidth="lg" sx={{ paddingLeft: 2, paddingRight: 2 }}>
+        <Container
+          maxWidth="lg"
+          sx={{ width: "95%", paddingLeft: 2, paddingRight: 2 }}
+        >
           <Box
             sx={{
               flexGrow: 1,
               bgcolor: "white",
               height: { lg: "90vh", md: "90vh", sm: "90vh", xs: "100%" },
               borderRadius: "10px",
-              margin: { xs: 2, sm: 0, md: 0, lg: 0 },
+              margin: { xs: 2, sm: 2, md: 2, lg: 0 },
               padding: { xs: 2, sm: 0, md: 0, lg: 0 },
             }}
           >
