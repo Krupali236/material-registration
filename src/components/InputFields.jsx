@@ -226,38 +226,30 @@ const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
         </Grid>
         <Grid size={{ lg: 8, md: 8, sm: 8, xs: 12 }}>
           {/* Country  */}
-          {/* <TextField
-            error
-            id={errors?.country ? "filled-error-helper-text" : "filled-basic"}
-            placeholder="Country"
-            variant="filled"
-            name="country"
-            helperText={errors.country ? "please enter valid country" : ""}
-            value={inputValue?.country}
-            onChange={handleInputChange}
-            type="text"
-            sx={{
-              "& .MuiFilledInput-root": {
-                border: errors?.country ? "1px solid #d32f2f" : "none",
-              },
-            }}
-          /> */}
-
           <Autocomplete
             disablePortal
+            id={errors?.country ? "filled-error-helper-text" : "filled-basic"}
+            name="country"
             options={Location[0].countries.map((country) => country.name)}
             sx={{ width: 300, color: "#000" }}
+            value={inputValue?.country || null}
             renderInput={(params) => (
               <TextField
                 {...params}
-                sx={{ color: "#000" }}
                 placeholder="Country"
+                // sx={{
+                //   "& .MuiFilledInput-root": {
+                //     border: errors?.country ? "1px solid #d32f2f" : "none",
+                //   },
+                // }}
+                // error={Boolean(errors?.country)}
+                // helperText={errors.country ? "please select country" : ""}
               />
             )}
             onChange={(event, value) => {
               setInputValue((prev) => ({
                 ...prev,
-                country: value,
+                country: value || "",
                 state: "",
                 city: "",
               }));
@@ -273,23 +265,6 @@ const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
         </Grid>
         <Grid size={{ lg: 8, md: 8, sm: 8, xs: 12 }}>
           {/* State  */}
-          {/* <TextField
-            error
-            id={errors?.state ? "filled-error-helper-text" : "filled-basic"}
-            placeholder="State"
-            variant="filled"
-            name="state"
-            helperText={errors.state ? "please enter valid state" : ""}
-            value={inputValue?.state}
-            onChange={handleInputChange}
-            type="text"
-            sx={{
-              "& .MuiFilledInput-root": {
-                border: errors?.state ? "1px solid #d32f2f" : "none",
-              },
-            }}
-          /> */}
-
           <Autocomplete
             disablePortal
             options={
@@ -297,12 +272,27 @@ const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
                 ? selectedCountry.states.map((state) => state.name)
                 : []
             }
+            value={inputValue?.state || null}
             sx={{ width: 300 }}
             renderInput={(params) => (
-              <TextField {...params} placeholder="State" />
+              <TextField
+                {...params}
+                placeholder="State"
+                // sx={{
+                //   "& .MuiFilledInput-root": {
+                //     border: errors?.state ? "1px solid #d32f2f" : "none",
+                //   },
+                // }}
+                // error={Boolean(errors?.state)}
+                // helperText={errors.state ? "please select state" : ""}
+              />
             )}
             onChange={(event, value) => {
-              setInputValue((prev) => ({ ...prev, state: value, city: "" }));
+              setInputValue((prev) => ({
+                ...prev,
+                state: value || "",
+                city: "",
+              }));
             }}
           />
         </Grid>
@@ -319,11 +309,22 @@ const InputFields = React.memo(({ inputValue, setInputValue, errors }) => {
             disablePortal
             options={selectedState ? selectedState.cities : []}
             sx={{ width: 300 }}
+            value={inputValue?.city || null}
             renderInput={(params) => (
-              <TextField {...params} placeholder="City" />
+              <TextField
+                {...params}
+                placeholder="City"
+                // sx={{
+                //   "& .MuiFilledInput-root": {
+                //     border: errors?.city ? "1px solid #d32f2f" : "none",
+                //   },
+                // }}
+                // error={Boolean(errors?.city)}
+                // helperText={errors.city ? "please select city" : ""}
+              />
             )}
             onChange={(event, value) => {
-              setInputValue((prev) => ({ ...prev, city: value }));
+              setInputValue((prev) => ({ ...prev, city: value || "" }));
             }}
           />
         </Grid>

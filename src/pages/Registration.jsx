@@ -38,6 +38,9 @@ const Registration = () => {
     if (!value?.city) {
       handleError.city = "Please Enter city";
     }
+    if (!value?.state) {
+      handleError.state = "Please Enter state";
+    }
     if (!value?.country) {
       handleError.country = "Please Enter country";
     }
@@ -84,26 +87,25 @@ const Registration = () => {
       }
     }
   };
-  const handleCancelBtn = () => {
-    setInputValue({
+
+  const handleClearBtn = () => {
+    setInputValue((prev) => ({
+      ...prev,
       username: "",
       email: "",
       gender: "",
       city: "",
+      state: "",
       country: "",
       date: "",
       subscriptions: [],
-    });
+    }));
     setErrors({});
   };
-
   return (
     <>
       <Box sx={{ width: { xs: "100%", sm: "100%", md: "80%", lg: "70%" } }}>
-        <Typography
-          variant="h5"
-          gutterBottom          
-        >
+        <Typography variant="h5" gutterBottom>
           Registration
         </Typography>
         <Typography variant="overline" gutterBottom textAlign="center">
@@ -140,7 +142,7 @@ const Registration = () => {
                   gap: 1,
                 }}
               >
-                <CancelBtn onClick={handleCancelBtn}>Clear</CancelBtn>
+                <CancelBtn onClick={handleClearBtn}>Clear</CancelBtn>
                 <ConfirmBtn onClick={handleConfirmBtn}>Confirm </ConfirmBtn>
               </Box>
             </Grid>
